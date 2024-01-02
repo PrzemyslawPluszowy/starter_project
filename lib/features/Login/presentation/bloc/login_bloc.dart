@@ -15,18 +15,18 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginEvent>((event, emit) async {
       await event.map(
         logIn: (event) async {
-          _handleLoginEvent(event, emit);
+          await _handleLoginEvent(event, emit);
         },
         logOut: (event) async {
-          _handleLogoutEvent(event, emit);
+          await _handleLogoutEvent(event, emit);
         },
       );
     });
   }
 
-  final ApiServices apiServices;
+  final AuthServices apiServices;
 
-  void _handleLoginEvent(_LogIn event, Emitter<LoginState> emit) async {
+  Future<void> _handleLoginEvent(_LogIn event, Emitter<LoginState> emit) async {
     try {
       ApiResponse res = await apiServices
           .login({'email': event.email, 'password': event.password});
@@ -34,6 +34,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(const LoginState.error());
       } else {
         await Hive.box(AppConst.tokenBox).put('token', res.accessToken);
+        emit(const LoginState.logedIn());
       }
     } catch (e, s) {
       Talker().error(e.toString(), s);
@@ -41,7 +42,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
-  void _handleLogoutEvent(_LogOut event, Emitter<LoginState> emit) async {
+  Future<void> _handleLogoutEvent(
+      _LogOut event, Emitter<LoginState> emit) async {
     try {
       emit(const LoginState.logedOut());
     } catch (e) {

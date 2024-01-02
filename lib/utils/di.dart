@@ -5,5 +5,6 @@ import 'package:starter/utils/dio_client.dart';
 final getIt = GetIt.instance;
 
 initDi() async {
-  getIt.registerLazySingleton<ApiServices>(() => ApiServices(buildDioClient()));
+  getIt.registerLazySingleton<AuthServices>(
+      () => AuthServices(buildDioClient()));
 }
