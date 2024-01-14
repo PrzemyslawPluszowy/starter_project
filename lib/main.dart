@@ -12,6 +12,7 @@ import 'package:starter/utils/constants.dart';
 import 'package:starter/utils/di.dart';
 import 'package:starter/utils/providers.dart';
 import 'package:starter/utils/routing/routes.dart';
+import 'package:starter/utils/ui_const.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,7 +49,9 @@ class MyApp extends StatelessWidget {
             visualDensity: VisualDensity.compact,
             useMaterial3: true,
             colorScheme: lightColorScheme,
-            fontFamily: GoogleFonts.openSans().fontFamily),
+            bottomNavigationBarTheme: CustomTheme.bottomNavigationBarThemeData,
+            appBarTheme: CustomTheme.appBarTheme,
+            fontFamily: GoogleFonts.oswald().fontFamily),
         darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       ),
     );
