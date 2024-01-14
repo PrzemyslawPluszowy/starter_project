@@ -135,7 +135,7 @@ class StartScreen extends StatelessWidget {
             onTap: () {
               _showMenu.value = false;
               Future.delayed(_animatePositioned, () {
-                context.pushReplacementNamed(RouteName.home);
+                context.goNamed(RouteName.feed);
               });
             },
             child: ClipPath(

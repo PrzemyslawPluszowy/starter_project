@@ -27,10 +27,11 @@ class Assets {
   Assets._();
 
   static const AssetGenImage herb = AssetGenImage('assets/herb.png');
+  static const AssetGenImage herbBw = AssetGenImage('assets/herbBw.png');
   static const $AssetsSliderGen slider = $AssetsSliderGen();
 
   /// List of all assets
-  static List<AssetGenImage> get values => [herb];
+  static List<AssetGenImage> get values => [herb, herbBw];
 }
 
 class AssetGenImage {

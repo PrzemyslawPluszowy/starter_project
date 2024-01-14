@@ -31,7 +31,7 @@ class UiColors {
   static const grey = Colors.grey;
   static const lightGrey = Color.fromARGB(255, 245, 245, 245);
   static const red = Colors.red;
-  static const darkGrey = Color.fromARGB(255, 51, 51, 51);
+  static const darkGrey = Color.fromARGB(255, 37, 37, 37);
 }
 
 class CustomTheme {
@@ -47,6 +47,8 @@ class CustomTheme {
 
   static const AppBarTheme appBarTheme = AppBarTheme(
     elevation: 0,
+    surfaceTintColor: UiColors.darkGrey,
+    foregroundColor: UiColors.darkGrey,
     backgroundColor: UiColors.darkGrey,
     titleTextStyle: TextStyle(color: UiColors.white, fontSize: Ui.fontSize16),
   );
