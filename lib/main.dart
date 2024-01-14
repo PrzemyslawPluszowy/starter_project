@@ -5,7 +5,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:starter/utils/color_scheme/color_schemes.dart';
 import 'package:starter/utils/constants.dart';
@@ -27,8 +29,11 @@ Future<void> main() async {
   );
 
   initDi();
+  await initializeDateFormatting();
 
   Intl.defaultLocale = 'pl_PL';
+  await Jiffy.setLocale('PL');
+
   runApp(const MyApp());
 }
 
@@ -41,16 +46,18 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: Providers.getProviders(),
       child: MaterialApp.router(
+        locale: const Locale('pl', 'PL'),
         routerConfig: router,
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
-        title: 'Ozc',
+        title: 'LkS Pisarowice',
         theme: ThemeData(
             visualDensity: VisualDensity.compact,
             useMaterial3: true,
             colorScheme: lightColorScheme,
             bottomNavigationBarTheme: CustomTheme.bottomNavigationBarThemeData,
             appBarTheme: CustomTheme.appBarTheme,
+            iconTheme: CustomTheme.iconThemeData,
             fontFamily: GoogleFonts.oswald().fontFamily),
         darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       ),

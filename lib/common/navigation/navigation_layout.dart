@@ -18,7 +18,6 @@ class NavigationLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 225, 225, 225),
       //TODO: add custom appbar fix this one
       appBar: AppBar(
         toolbarHeight: kToolbarHeight + 1,
